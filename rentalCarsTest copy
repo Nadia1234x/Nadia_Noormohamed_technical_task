@@ -1,0 +1,59 @@
+import requests
+import time
+
+#time.sleep(2)
+
+latitudePickup = "3.410632"
+#raw_input("please enter the pickup latitude: ")
+longitudePickup = "-2.157533"
+#raw_input("please enter the pickup longitude: ")
+latitudeDropoff = "3.410632"
+#raw_input("please enter the dropoff latitude: ")
+longitudeDropoff = "-2.157533"
+#raw_input("please enter the dropoff longitude: ")
+numberOfPassengers = int(raw_input("Please enter the number of passengers? : "))
+
+supplier1 = "Dave"
+supplier2 = "Eric"
+supplier3 = "Jeff"
+
+requestBooking = 0
+driverNumber = 1
+
+
+
+URL = "https://techtest.rideways.com/"
+#The parsing depends on the number of passengers
+start = time.time()
+def makeBookingRequest(numberOfPassengers, suplierName):
+    # 1) making the request
+   
+    
+    requestBooking = requests.get(URL + suplierName + "?pickup=" +latitudePickup 
+        + "," + longitudePickup + "&dropoff=" + latitudeDropoff + "," 
+        + longitudeDropoff)
+    
+    print requestBooking.status_code
+    print requestBooking.text
+    
+    if(requestBooking.status_code == 500):
+        print "Sorry there has been an internal server error"
+    
+    #output depends on the number of passengers
+    if(requestBooking.status_code == 200):
+        if(numberOfPassengers <= 4):
+            print "1"
+        if(numberOfPassengers > 4 & numberOfPassengers <= 6):
+            print "2"
+        if(numberOfPassengers > 6 & numberOfPassengers <= 16):
+            print "3"
+        
+end = time.time()
+print(end - start)    
+
+# 2) need to compare the car types amongst the suppliers and pick the cheapest
+
+#called method 
+makeBookingRequest(numberOfPassengers, supplier1)
+makeBookingRequest(numberOfPassengers, supplier2)
+makeBookingRequest(numberOfPassengers, supplier3)

@@ -1,0 +1,31 @@
+{
+  "name": "part2_rentalcarsapi",
+  "version": "1.0.0",
+  "description": "api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nadia1234x/Nadia_Noormohamed_technical_task.git"
+  },
+  "keywords": [
+    "API",
+    "RESTful"
+  ],
+  "author": "Nadia Noormohamed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nadia1234x/Nadia_Noormohamed_technical_task/issues"
+  },
+  "homepage": "https://github.com/Nadia1234x/Nadia_Noormohamed_technical_task#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.2.17"
+  }
+}
