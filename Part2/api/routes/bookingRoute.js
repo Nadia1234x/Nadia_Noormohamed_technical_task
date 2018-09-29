@@ -2,19 +2,19 @@
 module.exports = function(app) {
   var bookingList = require('../controllers/bookingController');
 
-  //gives back all the car types from all the suppliers
-  //unique key: latitude and longitudes of pickup and dropoff locations
-  app.route('/allSuppliers')
-    .get(bookingList.list_all_bookings)
-    .post(bookingList.create_a_booking);
+  app.route('/:supplier/:pickupLat/:pickupLong/:dropoffLat/:dropoffLong')
+  //returns a booking from a particular supplier given the pickup and dropoff
+  //locations
+    .get(bookingList.list_avail_booking_one_supplier)
+    .put(bookingList.update_an_avail_booking)
 
-
-  app.route('/:supplier')
-    .get(bookingList.read_a_booking)
+  //Used postman (google chrome extension) to add the available bookings into
+  //the database
+  app.route('/add_availability')
     .post(bookingList.create_a_booking)
-    .put(bookingList.update_a_booking)
 
-  app.route('/:supplier/:bookingID')
+  //delete a booking that is not available for some reason anymore.
+  app.route('/:bookingID')
     .delete(bookingList.delete_a_booking);
 
 
